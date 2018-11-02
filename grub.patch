@@ -1,0 +1,11 @@
+--- /etc/default/grub	2018-11-02 17:05:06.876772843 -0400
++++ grub.cfg	2018-11-02 17:04:09.603436957 -0400
+@@ -3,7 +3,7 @@
+ GRUB_DEFAULT=0
+ GRUB_TIMEOUT=5
+ GRUB_DISTRIBUTOR="Arch"
+-GRUB_CMDLINE_LINUX_DEFAULT="quiet"
++GRUB_CMDLINE_LINUX_DEFAULT="quiet acpi_osi=! acpi_osi=\"Windows 2009\""
+ GRUB_CMDLINE_LINUX=""
+ 
+ # Preload both GPT and MBR modules so that they are not missed
