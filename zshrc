@@ -7,8 +7,10 @@ bindkey -e
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/jmct/.zshrc'
 
-autoload -Uz compinit
+autoload -Uz compinit promptinit
 compinit
-# End of lines added by compinstall
+promptinit
 
-export PATH=$HOME/root/bin:$PATH
+export PATH=$HOME/root/bin:$HOME/.cabal/bin:$PATH
+
+prompt walters
