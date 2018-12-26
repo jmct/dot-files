@@ -1,0 +1,41 @@
+URxvt.font: xft:fira code:size=6
+URxvt.scrollBar: false
+
+! special
+*.foreground:   #bee4e5
+*.background:   #030404
+*.cursorColor:  #bee4e5
+
+! black
+*.color0:       #830005
+*.color8:       #a6549d
+
+! red
+*.color1:       #ca9800
+*.color9:       #ad9e5b
+
+! green
+*.color2:       #47a1a1
+*.color10:      #ea6761
+
+! yellow
+*.color3:       #354242
+*.color11:      #efa29f
+
+! blue
+*.color4:       #506262
+*.color12:      #1122dd 
+!#f17670
+
+! magenta
+*.color5:       #718889
+*.color13:      #4acb6c
+
+! cyan
+*.color6:       #97b6b7
+*.color14:      #5fc2c4
+
+! white
+*.color7:       #b75400
+*.color15:      #9eb3e6
+
