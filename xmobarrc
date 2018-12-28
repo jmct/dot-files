@@ -1,0 +1,18 @@
+Config
+  { font = "xft:fira-code:size=6"
+  , template = "%StdinReader% }{  %battery% %date%"
+  , commands =
+     [ Run StdinReader
+     , Run Battery ["--template"
+                   , "Batt: <acstatus>"
+                   , "--Low", "10"  -- 10%
+                   , "--High", "80" -- 80%
+                   , "--low", "darkred"
+                   , "--high", "darkgreen"
+                   , "--normal", "darkorange"
+                   , "--", "-o", "<left>% (<timeleft>)"
+                   , "-O", "<fc=#dAA520>Charging</fc>"
+                   , "-i", "<fc=#006000>Charged</fc>"
+                   ] 50
+      ]
+  }
