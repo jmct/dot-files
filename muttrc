@@ -1,0 +1,30 @@
+set editor="vim"
+
+set mbox_type=Maildir
+set folder=~/.mail/galois.com/
+set spoolfile=+/inbox
+set postponed=+/drafts
+set record=+/sent
+set header_cache=~/.cache/mutt
+
+# Use threads but show the most recent thread at the top of the view
+set sort = threads
+set sort_aux = reverse-last-date-received
+
+# Sidebar options
+set sidebar_visible
+set sidebar_format = '%B%?F? [%F]?%* %?N?%N/?%S'
+set sidebar_sort_method='unsorted'
+
+# make sure that mutt checks the new/unread for each mailbox automatically
+set mail_check_stats
+
+# Navigation of sidebar
+bind index,pager \CP sidebar-prev
+bind index,pager \CN sidebar-next
+bind index,pager \CO sidebar-open
+
+mailboxes = +inbox +all +sent +drafts
+
+# Commands to sync email
+macro index O "<shell-escape>mbsync -a<enter>" "run mbsync to fetch email"

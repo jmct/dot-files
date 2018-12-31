@@ -1,0 +1,62 @@
+IMAPAccount gmail
+# Address to connect to
+Host imap.gmail.com
+User jmct@galois.com
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.my-credentials/galois.com/gmail.gpg"
+#Pass "9R32aww3UZJxWw"
+#
+# Use SSL
+SSLType IMAPS
+AuthMechs LOGIN
+# The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
+#CertificateFile /etc/ssl/certs/ca-certificates.crt
+#CertificateFile ~/.cert/imap.gmail.com.pem
+#CertificateFile ~/.cert/Equifax_Secure_CA.pem
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+# The trailing "/" is important
+Path ~/.mail/galois.com/
+Inbox ~/.mail/galois.com/inbox
+
+
+Channel sync-gmail-default
+Master :gmail-remote:
+Slave :gmail-local:
+# Select some mailboxes to sync
+Patterns "INBOX" "@Waiting"
+SyncState *
+# Actually delete emails
+
+Channel sync-gmail-all
+Master :gmail-remote:"[Gmail]/All Mail"
+Slave :gmail-local:all
+SyncState *
+
+Channel sync-gmail-sent
+Master :gmail-remote:"[Gmail]/Sent Mail"
+Slave :gmail-local:sent
+SyncState *
+
+Channel sync-gmail-drafts
+Master :gmail-remote:"[Gmail]/Drafts"
+Slave :gmail-local:drafts
+SyncState *
+
+Channel sync-gmail-trash
+Master :gmail-remote:"[Gmail]/Trash"
+Slave :gmail-local:trash
+SyncState *
+
+Create slave
+Expunge Both
+
+Group gmail
+Channel sync-gmail-default
+Channel sync-gmail-all
+Channel sync-gmail-sent
+Channel sync-gmail-drafts
+Channel sync-gmail-trash
+
