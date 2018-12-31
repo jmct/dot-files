@@ -7,11 +7,11 @@ URxvt.scrollBar: false
 *.cursorColor:  #bee4e5
 
 ! black
-*.color0:       #830005
+*.color0:       #190000
 *.color8:       #a6549d
 
 ! red
-*.color1:       #ca9800
+*.color1:       #946f00
 *.color9:       #ad9e5b
 
 ! green
@@ -36,6 +36,6 @@ URxvt.scrollBar: false
 *.color14:      #5fc2c4
 
 ! white
-*.color7:       #b75400
+*.color7:       #e46900
 *.color15:      #9eb3e6
 
