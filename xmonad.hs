@@ -16,9 +16,13 @@ import XMonad.Prompt.Shell
 import XMonad.Prompt.Workspace
 import XMonad.Prompt
 
+import XMonad.Layout.Spacing
+
 myTerminal = "urxvt"
 
 myWorkspaces = ["misc", "social", "tamba", "haccs"] ++ map show [5..9]
+
+myLayoutHook = spacingRaw True (Border 0 0 0 0) False (Border 5 5 5 5) True (layoutHook def)
 
 promptConf = def { position = CenteredAt 0.5 0.5
                  , height   = 54
@@ -51,6 +55,10 @@ myStatusBar conf = do
 myConf = def { terminal = myTerminal
              , keys     = liftM2 M.union myKeys (keys def)
              , workspaces = myWorkspaces
+             , layoutHook = myLayoutHook
+             , borderWidth = 5
+             , normalBorderColor = "#000000"
+             , focusedBorderColor = "#a54242"
              }
 
 main = myStatusBar myConf >>= xmonad
