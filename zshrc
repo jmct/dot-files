@@ -13,4 +13,7 @@ promptinit
 
 export PATH=$HOME/root/bin:$HOME/.cabal/bin:$PATH
 
-prompt walters
+prompt redhat
+
+# Keybindings that are not part of zsh defaults:
+bindkey "\e[3~" delete-char
