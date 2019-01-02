@@ -1,5 +1,6 @@
 {-# LANGUAGE FlexibleContexts #-}
 import XMonad
+import XMonad.StackSet (current, screen)
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run (spawnPipe)
@@ -20,7 +21,7 @@ import XMonad.Layout.Spacing
 
 myTerminal = "urxvt"
 
-myWorkspaces = ["misc", "social", "tamba", "haccs"] ++ map show [5..9]
+myWorkspaces = ["misc", "tamba", "haccs"] ++ map show [4..8] ++ ["email"]
 
 myLayoutHook = spacingRaw True (Border 0 0 0 0) False (Border 5 5 5 5) True (layoutHook def)
 
@@ -34,7 +35,9 @@ promptConf = def { position = CenteredAt 0.5 0.5
 myKeys :: XConfig Layout -> M.Map (ButtonMask, KeySym) (X ())
 myKeys conf = M.fromList
     [((modm .|. shiftMask, xK_r), workspacePrompt promptConf (O.windows . W.greedyView))
-    ,((modm,               xK_n), renameWorkspace promptConf)]
+    ,((modm,               xK_n), renameWorkspace promptConf)
+    ,((modm .|. shiftMask, xK_Return), spawnTerm)
+    ]
   where
     modm = XMonad.modMask conf
 
@@ -60,5 +63,14 @@ myConf = def { terminal = myTerminal
              , normalBorderColor = "#000000"
              , focusedBorderColor = "#a54242"
              }
+
+getScreen :: X (ScreenId)
+getScreen = fmap (screen . current . windowset) get
+
+spawnTerm :: X ()
+spawnTerm = do
+  sid <- getScreen
+  let opt = if sid == 1 then " -fn \"xft:fira code:size=10\"" else ""
+  spawn $ myTerminal ++ opt
 
 main = myStatusBar myConf >>= xmonad
