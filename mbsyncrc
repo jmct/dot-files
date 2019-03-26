@@ -2,13 +2,12 @@ IMAPAccount gmail
 # Address to connect to
 Host imap.gmail.com
 User jmct@galois.com
-PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.my-credentials/galois.com/gmail.gpg"
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.my-credentials/galois.com/ldap.gpg"
 #
 # Use SSL
 SSLType IMAPS
 AuthMechs LOGIN
-# The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
-#CertificateFile /etc/ssl/certs/ca-certificates.crt
+# The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.  #CertificateFile /etc/ssl/certs/ca-certificates.crt
 #CertificateFile ~/.cert/imap.gmail.com.pem
 #CertificateFile ~/.cert/Equifax_Secure_CA.pem
 
@@ -48,6 +47,14 @@ Master :gmail-remote:"[Gmail]/Trash"
 Slave :gmail-local:trash
 SyncState *
 
+# This is how you deal with tags(?)
+Channel sync-gmail-lists
+Master :gmail-remote:
+Slave :gmail-local:
+# The set of tags
+Patterns "tamba" "haccs" "hiring" "census" "irad" "verona" "people" "mob"
+SyncState *
+
 Create slave
 Expunge Both
 
@@ -57,4 +64,4 @@ Channel sync-gmail-all
 Channel sync-gmail-sent
 Channel sync-gmail-drafts
 Channel sync-gmail-trash
-
+Channel sync-gmail-lists
