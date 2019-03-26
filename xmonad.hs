@@ -34,8 +34,9 @@ promptConf = def { position = CenteredAt 0.5 0.5
 
 myKeys :: XConfig Layout -> M.Map (ButtonMask, KeySym) (X ())
 myKeys conf = M.fromList
-    [((modm .|. shiftMask, xK_r), workspacePrompt promptConf (O.windows . W.greedyView))
-    ,((modm,               xK_n), renameWorkspace promptConf)
+    [((modm,               xK_n), renameWorkspace promptConf)
+    ,((modm,               xK_p), spawn "dmenu_run -fn 'FiraCode-8'")
+    ,((modm .|. shiftMask, xK_r), workspacePrompt promptConf (O.windows . W.greedyView))
     ,((modm .|. shiftMask, xK_Return), spawnTerm)
     ]
   where
@@ -70,7 +71,7 @@ getScreen = fmap (screen . current . windowset) get
 spawnTerm :: X ()
 spawnTerm = do
   sid <- getScreen
-  let opt = if sid == 1 then " -fn \"xft:fira code:size=10\"" else ""
+  let opt = if sid == 1 then " -fn \"xft:FiraCode:size=10\"" else ""
   spawn $ myTerminal ++ opt
 
 main = myStatusBar myConf >>= xmonad

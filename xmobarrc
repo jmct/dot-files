@@ -1,5 +1,5 @@
 Config
-  { font = "xft:fira-code:size=6"
+  { font = "xft:FiraCode:size=6"
   , template = "%StdinReader% }{  %battery% %date%"
   , commands =
      [ Run StdinReader
