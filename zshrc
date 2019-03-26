@@ -11,7 +11,7 @@ autoload -Uz compinit promptinit
 compinit
 promptinit
 
-export PATH=$HOME/root/bin:$HOME/.cabal/bin:$PATH
+export PATH=$HOME/root/bin:$HOME/.cabal/bin:$HOME/.local/bin:$PATH
 
 prompt redhat
 
