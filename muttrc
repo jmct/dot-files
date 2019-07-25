@@ -24,7 +24,7 @@ bind index,pager \CP sidebar-prev
 bind index,pager \CN sidebar-next
 bind index,pager \CO sidebar-open
 
-mailboxes = +inbox +sent +tamba +haccs +hiring +census +irad +verona +hiring +mob
+mailboxes = +inbox +sent +tamba +haccs +hiring +census +irad +verona +hiring +mob +music
 
 # Commands to sync email
 macro index O "<shell-escape>mbsync -a<enter>" "run mbsync to fetch email"
@@ -47,3 +47,6 @@ macro index a \
 
 macro index,pager A "<pipe-message>goobook add<return>" \
     "Add the sender to goobook contacts"
+
+macro index,pager \cb "<pipe-message> urlscan<Enter>" \
+    "call urlscan to extract URLs out of a message"

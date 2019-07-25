@@ -52,7 +52,7 @@ Channel sync-gmail-lists
 Master :gmail-remote:
 Slave :gmail-local:
 # The set of tags
-Patterns "tamba" "haccs" "hiring" "census" "irad" "verona" "people" "mob"
+Patterns "tamba" "haccs" "hiring" "census" "irad" "verona" "people" "mob" "music"
 SyncState *
 
 Create slave
