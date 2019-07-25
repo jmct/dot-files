@@ -5,6 +5,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run (spawnPipe)
 import XMonad.Actions.WorkspaceNames
+import XMonad.Layout.ThreeColumns
 
 import System.IO
 import qualified Data.Map as M
@@ -21,9 +22,9 @@ import XMonad.Layout.Spacing
 
 myTerminal = "urxvt"
 
-myWorkspaces = ["misc", "tamba", "haccs"] ++ map show [4..8] ++ ["email"]
+myWorkspaces = ["web", "tamba", "verona"] ++ map show [4..8] ++ ["email"]
 
-myLayoutHook = spacingRaw True (Border 0 0 0 0) False (Border 5 5 5 5) True (layoutHook def)
+myLayoutHook = spacingRaw True (Border 0 0 0 0) False (Border 5 5 5 5) True (ThreeColMid 1 (3/100) (1/2) ||| layoutHook def)
 
 promptConf = def { position = CenteredAt 0.5 0.5
                  , height   = 54
