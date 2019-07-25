@@ -7,3 +7,5 @@
   st    = status
   hist  = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   mylog = log --stat --author=\"José Manuel Calderón Trilla\"
+  logh  = log --pretty=format:\"%h\"
+  diffc = diff --cached
