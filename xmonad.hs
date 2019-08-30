@@ -33,10 +33,31 @@ promptConf = def { position = CenteredAt 0.5 0.5
                  , promptBorderWidth = 10
                  }
 
+spotifyPlayPause :: X ()
+spotifyPlayPause =
+  spawn $ unwords ["dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify"
+                  ,"/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.PlayPause"
+                  ]
+
+spotifyNext :: X ()
+spotifyNext =
+  spawn $ unwords ["dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify"
+                  ,"/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.Next"
+                  ]
+
+spotifyPrevious :: X ()
+spotifyPrevious =
+  spawn $ unwords ["dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify"
+                  ,"/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.Previous"
+                  ]
+
 myKeys :: XConfig Layout -> M.Map (ButtonMask, KeySym) (X ())
 myKeys conf = M.fromList
     [((modm,               xK_n), renameWorkspace promptConf)
     ,((modm,               xK_p), spawn "dmenu_run -fn 'FiraCode-8'")
+    ,((modm,               xK_semicolon), spotifyPlayPause)
+    ,((modm .|. shiftMask, xK_n), spotifyNext)
+    ,((modm .|. shiftMask, xK_p), spotifyPrevious)
     ,((modm .|. shiftMask, xK_r), workspacePrompt promptConf (O.windows . W.greedyView))
     ,((modm .|. shiftMask, xK_Return), spawnTerm)
     ]
