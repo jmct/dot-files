@@ -1,0 +1,3 @@
+:set editor "vim"
+:set prompt "λ it → "
+let it = "init"

@@ -6,7 +6,6 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run (spawnPipe)
 import XMonad.Actions.WorkspaceNames
 import XMonad.Layout.ThreeColumns
-
 import System.IO
 import qualified Data.Map as M
 
@@ -19,6 +18,12 @@ import XMonad.Prompt.Workspace
 import XMonad.Prompt
 
 import XMonad.Layout.Spacing
+
+myFloatingWindows = ["Zoom"
+                    ,"zoom"
+                    ,"galculator"
+                    ,"Galculator"
+                    ]
 
 myTerminal = "urxvt"
 
@@ -58,7 +63,7 @@ myKeys conf = M.fromList
     ,((modm,               xK_semicolon), spotifyPlayPause)
     ,((modm .|. shiftMask, xK_n), spotifyNext)
     ,((modm .|. shiftMask, xK_p), spotifyPrevious)
-    ,((modm .|. shiftMask, xK_r), workspacePrompt promptConf (O.windows . W.greedyView))
+    ,((modm .|. shiftMask, xK_r), sendMessage ToggleStruts)
     ,((modm .|. shiftMask, xK_Return), spawnTerm)
     ]
   where
@@ -77,11 +82,15 @@ myStatusBar conf = do
  where
   tsKey conf = M.singleton (modMask conf, xK_b) (sendMessage ToggleStruts)
 
+myManageHook = composeAll
+  [ className =? f --> doFloat | f <- myFloatingWindows ]
+
 
 myConf = def { terminal = myTerminal
              , keys     = liftM2 M.union myKeys (keys def)
              , workspaces = myWorkspaces
              , layoutHook = myLayoutHook
+             , manageHook = myManageHook
              , borderWidth = 5
              , normalBorderColor = "#000000"
              , focusedBorderColor = "#a54242"

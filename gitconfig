@@ -9,3 +9,5 @@
   mylog = log --stat --author=\"José Manuel Calderón Trilla\"
   logh  = log --pretty=format:\"%h\"
   diffc = diff --cached
+[credential]
+	helper = store

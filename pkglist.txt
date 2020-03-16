@@ -40,7 +40,6 @@ iproute2
 iputils
 iw
 jfsutils
-lenovo-throttling-fix-git
 less
 libtool
 libxss
@@ -55,7 +54,6 @@ man-db
 man-pages
 mdadm
 nano
-ncurses5-compat-libs
 netctl
 networkmanager
 numactl

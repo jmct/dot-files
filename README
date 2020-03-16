@@ -1,7 +1,11 @@
 Things for GHC
 ==============
 
-ln -s libcurses.so.5 libtinfo.so.5
+I used the ncurses5-compat-libs from the AUR, but I had to change the PKGBUILD, which is stored in ncurses5-compat-libs.patch
+
+Make sure the following symlink exists:
+
+ln -s /usr/lib/libcurses.so.5 /usr/lib/libtinfo.so.5
 
 For X1 Extreme Laptop
 =====================
