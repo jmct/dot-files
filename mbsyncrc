@@ -1,8 +1,8 @@
-IMAPAccount gmail
+IMAPAccount galois
 # Address to connect to
 Host imap.gmail.com
 User jmct@galois.com
-PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.my-credentials/galois.com/ldap.gpg"
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.my-credentials/galois.com/gmail-pass.gpg"
 #
 # Use SSL
 SSLType IMAPS
@@ -11,46 +11,46 @@ AuthMechs LOGIN
 #CertificateFile ~/.cert/imap.gmail.com.pem
 #CertificateFile ~/.cert/Equifax_Secure_CA.pem
 
-IMAPStore gmail-remote
-Account gmail
+IMAPStore galois-remote
+Account galois
 
-MaildirStore gmail-local
+MaildirStore galois-local
 # The trailing "/" is important
 Path ~/.mail/galois.com/
 Inbox ~/.mail/galois.com/inbox
 
-Channel sync-gmail-default
-Master :gmail-remote:
-Slave :gmail-local:
+Channel sync-galois-default
+Master :galois-remote:
+Slave :galois-local:
 # Select some mailboxes to sync
 Patterns "INBOX" "@Waiting"
 SyncState *
 # Actually delete emails
 
-Channel sync-gmail-all
-Master :gmail-remote:"[Gmail]/All Mail"
-Slave :gmail-local:all
+Channel sync-galois-all
+Master :galois-remote:"[Gmail]/All Mail"
+Slave :galois-local:all
 SyncState *
 
-Channel sync-gmail-sent
-Master :gmail-remote:"[Gmail]/Sent Mail"
-Slave :gmail-local:sent
+Channel sync-galois-sent
+Master :galois-remote:"[Gmail]/Sent Mail"
+Slave :galois-local:sent
 SyncState *
 
-Channel sync-gmail-drafts
-Master :gmail-remote:"[Gmail]/Drafts"
-Slave :gmail-local:drafts
+Channel sync-galois-drafts
+Master :galois-remote:"[Gmail]/Drafts"
+Slave :galois-local:drafts
 SyncState *
 
-Channel sync-gmail-trash
-Master :gmail-remote:"[Gmail]/Trash"
-Slave :gmail-local:trash
+Channel sync-galois-trash
+Master :galois-remote:"[Gmail]/Trash"
+Slave :galois-local:trash
 SyncState *
 
 # This is how you deal with tags(?)
-Channel sync-gmail-lists
-Master :gmail-remote:
-Slave :gmail-local:
+Channel sync-galois-lists
+Master :galois-remote:
+Slave :galois-local:
 # The set of tags
 Patterns "tamba" "haccs" "hiring" "census" "irad" "verona" "people" "mob" "music"
 SyncState *
@@ -58,10 +58,10 @@ SyncState *
 Create slave
 Expunge Both
 
-Group gmail
-Channel sync-gmail-default
-Channel sync-gmail-all
-Channel sync-gmail-sent
-Channel sync-gmail-drafts
-Channel sync-gmail-trash
-Channel sync-gmail-lists
+Group galois
+Channel sync-galois-default
+Channel sync-galois-all
+Channel sync-galois-sent
+Channel sync-galois-drafts
+Channel sync-galois-trash
+Channel sync-galois-lists
