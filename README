@@ -14,3 +14,18 @@ I used the lenovo-throttling-fix python script, found at github.com/erpalma/leno
 
 and the AUR package at: aur.archlinux.org/packages/lenovo-throttling-fix
 wget https://www.haskell.org/cabal/release/cabal-install-2.2.0.0/cabal-install-2.2.0.0-x86_64-unknown-linux.tar.gz
+
+Italics in `tmux`
+=================
+
+You have to tell the terminfo database about tmux. The description in in the
+file `tmux-256color-italic.terminfo`. You register that info with
+
+```{sh}
+tic -x tmux-256color-italic.terminfo
+```
+
+The `-x` is necessary as it treats the 'unknown' capabilities differently.
+
+Once you've used `tic` to register the terminfo, make sure that
+`tmux.conf` correctly sets the terminfo.
