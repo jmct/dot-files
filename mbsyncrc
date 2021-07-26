@@ -1,3 +1,6 @@
+Create near
+Expunge Both
+
 IMAPAccount galois
 # Address to connect to
 Host imap.gmail.com
@@ -55,9 +58,6 @@ Slave :galois-local:
 Patterns "tamba" "haccs" "hiring" "census" "irad" "verona" "people" "mob" "music"
 SyncState *
 
-Create slave
-Expunge Both
-
 Group galois
 Channel sync-galois-default
 Channel sync-galois-all
@@ -65,3 +65,71 @@ Channel sync-galois-sent
 Channel sync-galois-drafts
 Channel sync-galois-trash
 Channel sync-galois-lists
+
+################################################################################
+##### UMD Email below
+################################################################################
+
+
+IMAPAccount umd
+# Address to connect to
+Host imap.gmail.com
+User jmct@umd.edu
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.my-credentials/umd.edu/gmail-pass.gpg"
+#
+# Use SSL
+SSLType IMAPS
+AuthMechs LOGIN
+
+IMAPStore umd-remote
+Account umd
+
+MaildirStore umd-local
+# The trailing "/" is important
+Path ~/.mail/umd.edu/
+Inbox ~/.mail/umd.edu/inbox
+SubFolders Verbatim
+
+Channel sync-umd-default
+Master :umd-remote:
+Slave :umd-local:
+# Select some mailboxes to sync
+Patterns "INBOX" "@Waiting"
+SyncState *
+# Actually delete emails
+
+Channel sync-umd-all
+Master :umd-remote:"[Gmail]/All Mail"
+Slave :umd-local:all
+SyncState *
+
+Channel sync-umd-sent
+Master :umd-remote:"[Gmail]/Sent Mail"
+Slave :umd-local:sent
+SyncState *
+
+Channel sync-umd-drafts
+Master :umd-remote:"[Gmail]/Drafts"
+Slave :umd-local:drafts
+SyncState *
+
+Channel sync-umd-trash
+Master :umd-remote:"[Gmail]/Trash"
+Slave :galois-local:trash
+SyncState *
+
+# This is how you deal with tags(?)
+Channel sync-umd-lists
+Master :umd-remote:
+Slave :umd-local:
+# The set of tags
+Patterns "evals" "spring2021/320" "admin/benefits" "love" "sent" "f2021/216" "imd"
+SyncState *
+
+Group umd
+Channel sync-umd-default
+Channel sync-umd-all
+Channel sync-umd-sent
+Channel sync-umd-drafts
+Channel sync-umd-trash
+Channel sync-umd-lists

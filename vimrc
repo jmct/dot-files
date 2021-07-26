@@ -146,16 +146,32 @@ augroup filetype_vim
 augroup END
 " }}}
 
+"" Colors seems to be a pain between VIM and tmux
+"" The following comment on an issue in VIM seems to be the workaround:
+"" https://github.com/vim/vim/issues/3608#issuecomment-438487463
+
+"" This is only necessary if you use "set termguicolors":
+" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+"" However, a comment from just two months ago (May 2021), says the the issue can be fixed by adding another setting to tmux. In my view the issue is the vim+tmux combo, so I will address it there.
+set termguicolors
 syntax on
-colorscheme default
+"colorscheme default
+
+
+" fixes glitch? in colors when using vim with tmux
+set background=dark
+set t_Co=256
+
 
 
 """ Satusline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set statusline=%f             " Current file
-set statusline+=\ -\ 
-set statusline+=FT:\ %y\      " Show the filetype
-set statusline+=%{trim(system('echo\ $HOME'))}
+"set statusline=%f             " Current file
+"set statusline+=\ -\ 
+"set statusline+=FT:\ %y\      " Show the filetype
+"set statusline+=%{trim(system('echo\ $HOME'))}
 " THIS DOES NOT WORK
 " it needs to deal with the possibility that we aren't in a git repo
 "set statusline+=%{trim(system('git\ branch'))}
@@ -244,14 +260,14 @@ set statusline+=col.\ %02c\ of\ line\ %l\ out\ of\ %L
 
 """ Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call plug#begin('~/.vim/plugged')
-
-Plug 'vimwiki/vimwiki', {'branch': 'dev'} | Plug 'tbabej/taskwiki'
-
-call plug#end()
-
-let g:vimwiki_list = [{'path': '~/wiki/',
-                     \ 'syntax': 'markdown', 'ext': '.md'}]
+"call plug#begin('~/.vim/plugged')
+"
+"Plug 'vimwiki/vimwiki', {'branch': 'dev'} | Plug 'tbabej/taskwiki'
+"
+"call plug#end()
+"
+"let g:vimwiki_list = [{'path': '~/wiki/',
+"                     \ 'syntax': 'markdown', 'ext': '.md'}]
 
 """"""""""""""""""""""""""""""""""
 " VIMSCRIPT THE HARD WAY EXERCISES
@@ -267,3 +283,6 @@ iabbrev teh the
 
 iabbrev memail jmct@jmct.cc
 iabbrev mename José Manuel Calderón Trilla
+iabbrev mefirst José
+iabbrev mefirst José
+iabbrev mecaltri José
