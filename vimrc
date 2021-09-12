@@ -157,11 +157,11 @@ augroup END
 "" However, a comment from just two months ago (May 2021), says the the issue can be fixed by adding another setting to tmux. In my view the issue is the vim+tmux combo, so I will address it there.
 set termguicolors
 syntax on
-"colorscheme default
+colorscheme jmct-beamer
 
 
 " fixes glitch? in colors when using vim with tmux
-set background=dark
+"set background=dark
 set t_Co=256
 
 
@@ -286,3 +286,15 @@ iabbrev mename José Manuel Calderón Trilla
 iabbrev mefirst José
 iabbrev mefirst José
 iabbrev mecaltri José
+
+
+
+" Show syntax highlighting groups for word under cursor
+nmap <C-S-P> :call <SID>SynStack()<CR>
+
+function! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc

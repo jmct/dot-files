@@ -1,0 +1,68 @@
+# Maintainer: JMCT <jmct@jmct.cc>
+
+# Note: I do not (and will not) provide the actual font files.
+# The designer has worked hard and deserves compensation for their work.
+# This will work if you have the font files located in the same directory as this PKGBUILD
+
+pkgname=ttf-pragmata-pro
+pkgver=1.0
+pkgrel=1
+pkgdesc='PragmataPro™ is a condensed monospaced font optimized for screen, designed by Fabrizio Schiavi to be the ideal font for coding, math and engineering'
+arch=('any')
+url='https://fsd.it/shop/fonts/pragmatapro/'
+license=('custom:Commercial Desktop License')
+provides=('ttf-font')
+
+source=("PragmataProB_0828.ttf"
+        "PragmataProB_liga_0828.ttf"
+        "PragmataProI_0828.ttf"
+        "PragmataProI_liga_0828.ttf"
+        "PragmataPro_Mono_B_0828.ttf"
+        "PragmataPro_Mono_B_liga_0828.ttf"
+        "PragmataPro_Mono_I_0828.ttf"
+        "PragmataPro_Mono_I_liga_0828.ttf"
+        "PragmataPro_Mono_R_0828.ttf"
+        "PragmataPro_Mono_R_liga_0828.ttf"
+        "PragmataPro_Mono_Z_0828.ttf"
+        "PragmataPro_Mono_Z_liga_0828.ttf"
+        "PragmataProR_0828.ttf"
+        "PragmataProR_liga_0828.ttf"
+        "PragmataProZ_0828.ttf"
+        "PragmataProZ_liga_0828.ttf")
+
+sha256sums=('79a839dad22ddce9924fa949a647e6dd499bc8c297041f95934d8ad50d9c3e41'
+            'e8861154ddfacce6e236cfa799c7eb77f3a7600b6d181d82c9675316dc955d7a'
+            '3f81714098d0690183c92701722a4526e1c1b372ea8ed875aa61712ca2655bc9'
+            '8510cc7b0e09033462f358545650161c88d3f3ca3267ace0df561bb96033460e'
+            '20fbbda0884e2adecafa275018be0dcba4aef85619af60f74d5b7fe1bda79990'
+            '08cd186756ff7b6a0eae72b55b0cbc33bb70801dac6093cffe6e0194172319e4'
+            '7bc485b27cb24d84e73e561d68edb2a8be51b1ecb6e257c2f05b62c700c43de6'
+            '0be3a23c977c97a56baf1337d3e8c5c5c615bea420e7b40a900548ba2420c662'
+            '458207ac432c1428acf3c0641aef4dfd1efb5ba66e651de0c1e61a9a9177dc36'
+            '7c102e13b5e1a3b37e3fe661e57d5bb177f28582d614e70adceb8fd0fa2fa564'
+            '550af186594444b1b52b2e2a73a37db7e37faabc8b4ce7efb121e9c375cd985e'
+            '15afcdd101541be281df811cdfcd88f3eedb9de0d0b7d13fe349b8bbdedda864'
+            '41fc36dbe9d6d9d19bd1b51b3c2633ab196952e493b0f5d5fdc26623c1f871ee'
+            '374fa8f445da65eb91195dacbebd3ad77f66b9fc42b8d874cdc6730136c32bf6'
+            '0910af5447045ce571154045f4d3846ee6c2689f4fe9ab0b9064b84b4cd95373'
+            'a9827eafc1b48f77ea0f7a92edd06eab296742dcc489a52c51339c2cb77634aa')
+
+package() {
+  install -dm 755 "${pkgdir}/usr/share/fonts/TTF"
+  install -m 644 PragmataProB_0828.ttf "${pkgdir}/usr/share/fonts/TTF/PragmataProB_0828.ttf"
+  install -m 644 PragmataProB_liga_0828.ttf "${pkgdir}/usr/share/fonts/TTF/PragmataProB_liga_0828.ttf"
+  install -m 644 PragmataProI_0828.ttf "${pkgdir}/usr/share/fonts/TTF/PragmataProI_0828.ttf"
+  install -m 644 PragmataProI_liga_0828.ttf "${pkgdir}/usr/share/fonts/TTF/PragmataProI_liga_0828.ttf"
+  install -m 644 PragmataPro_Mono_B_0828.ttf "${pkgdir}/usr/share/fonts/TTF/PragmataPro_Mono_B_0828.ttf"
+  install -m 644 PragmataPro_Mono_B_liga_0828.ttf "${pkgdir}/usr/share/fonts/TTF/PragmataPro_Mono_B_liga_0828.ttf"
+  install -m 644 PragmataPro_Mono_I_0828.ttf "${pkgdir}/usr/share/fonts/TTF/PragmataPro_Mono_I_0828.ttf"
+  install -m 644 PragmataPro_Mono_I_liga_0828.ttf "${pkgdir}/usr/share/fonts/TTF/PragmataPro_Mono_I_liga_0828.ttf"
+  install -m 644 PragmataPro_Mono_R_0828.ttf "${pkgdir}/usr/share/fonts/TTF/PragmataPro_Mono_R_0828.ttf"
+  install -m 644 PragmataPro_Mono_R_liga_0828.ttf "${pkgdir}/usr/share/fonts/TTF/PragmataPro_Mono_R_liga_0828.ttf"
+  install -m 644 PragmataPro_Mono_Z_0828.ttf "${pkgdir}/usr/share/fonts/TTF/PragmataPro_Mono_Z_0828.ttf"
+  install -m 644 PragmataPro_Mono_Z_liga_0828.ttf "${pkgdir}/usr/share/fonts/TTF/PragmataPro_Mono_Z_liga_0828.ttf"
+  install -m 644 PragmataProR_0828.ttf "${pkgdir}/usr/share/fonts/TTF/PragmataProR_0828.ttf"
+  install -m 644 PragmataProR_liga_0828.ttf "${pkgdir}/usr/share/fonts/TTF/PragmataProR_liga_0828.ttf"
+  install -m 644 PragmataProZ_0828.ttf "${pkgdir}/usr/share/fonts/TTF/PragmataProZ_0828.ttf"
+  install -m 644 PragmataProZ_liga_0828.ttf "${pkgdir}/usr/share/fonts/TTF/PragmataProZ_liga_0828.ttf"
+}
